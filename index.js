@@ -5,7 +5,7 @@ const express = require('express');
 
 const path = require('path');
 
-console.log('second commit done ...');
+console.log("There is no god, well, I can't say. Something is there...");
 
 
 //
