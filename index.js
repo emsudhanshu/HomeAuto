@@ -16,7 +16,7 @@ var LED = new Gpio(4, 'out');
 
 app.use(express.json());
 
-LED.writeSync(0);
+LED.writeSync(1);
 
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '/public/index.html'));
@@ -37,4 +37,11 @@ app.post('/changeState', (req, res) => {
 // making the server to listen to requests
 app.listen(PORT, () => {
 	console.log(`Server running at: http://localhost:${PORT}/`);
+});
+
+
+process.on('exit', function(code) {
+	console.log('terminating node server');
+	LED.unexport(); // Unexport GPIO to free resources
+
 });
