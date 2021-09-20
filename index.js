@@ -44,8 +44,5 @@ process.on('SIGINT', function (code) {
 	console.log('terminating node server');
 	LED.writeSync(1);
 	// LED.unexport(); // Unexport GPIO to free resources
-
-	exitHandler.bind(null, {exit:true})
-
-
+	process.exit(1)
 });
