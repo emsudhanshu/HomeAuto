@@ -16,6 +16,7 @@ var LED = new Gpio(4, 'out');
 
 app.use(express.json());
 
+LED.writeSync(0);
 
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '/public/index.html'));
