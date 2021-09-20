@@ -11,8 +11,8 @@ app.use('/static', express.static('public'))
 
 
 const PORT = 8080;
-// var Gpio = require('onoff').Gpio;
-// var LED = new Gpio(4, 'out');
+var Gpio = require('onoff').Gpio;
+var LED = new Gpio(4, 'out');
 
 app.use(express.json());
 
@@ -24,6 +24,8 @@ app.get('/', (req, res) => {
 app.post('/changeState', (req, res) => {
 	let { deviceId, val } = req.body;
 	console.log(`Received request - Turn Device ID - ${deviceId} ${val == 1 ? 'ON' : 'OFF'}`);
+	val = val == 1 ? 0 : 1;
+	LED.writeSync(parseInt(val));
 	res.send(JSON.stringify({
 		'message': 'device state changed successfully :)'
 	}));
