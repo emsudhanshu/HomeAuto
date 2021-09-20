@@ -40,7 +40,7 @@ app.listen(PORT, () => {
 });
 
 
-process.on('exit', function(code) {
+process.on('SIGINT', function(code) {
 	console.log('terminating node server');
 	LED.unexport(); // Unexport GPIO to free resources
 
