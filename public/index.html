@@ -1,28 +1,29 @@
 <html>
-	<head>
-		<title>
-			HomeAuto
-		</title>
-	</head>
-	<body
-		<div style="font-family : 'calibri'">
-			<div style="text-align : center">
-				Welcome to HOME-AUTO
-			</div>
-			
-			<div>
-				Turn Device 1
-				<button onClick="
-					
-					
-					console.log('button clicked');
-					fetch('http://192.168.1.15:8080/changeState',{method: 'POST', body : JSON.stringify({val: 1, deviceId: 1}),headers: {'Content-Type' : 'application/json'}}).then(data => alert('success - device 1 turned on'));">ON</button>
 
-			<button onCLick="console.log('button clicked'); 
-				fetch('http://192.168.1.15:8080/changeState',{method: 'POST', body : JSON.stringify({val : 0, deviceId : 1}),headers : {'Content-Type' : 'application/json'}}).then(data=>alert('success device 1 turned off'));
+<head>
+	<title>
+		HomeAuto
+	</title>
+</head>
+
+<body <div style="font-family : 'calibri'">
+	<div style="text-align : center">
+		Welcome to HOME-AUTO
+	</div>
+
+	<div>
+		Turn Device 1
+		<button
+			onClick="
+					console.log('button clicked');
+					fetch('http://192.168.1.11:8080/changeState',{method: 'POST', body : JSON.stringify({val: 1, deviceId: 1}),headers: {'Content-Type' : 'application/json'}}).then(data => alert('success - device 1 turned on'));">ON</button>
+
+		<button onCLick="console.log('button clicked'); 
+				fetch('http://192.168.1.11:8080/changeState',{method: 'POST', body : JSON.stringify({val : 0, deviceId : 1}),headers : {'Content-Type' : 'application/json'}}).then(data=>alert('success device 1 turned off'));
 				">OFF</button>
-			</div>
-		</div>
-		
-	</body>
+	</div>
+	</div>
+
+</body>
+
 </html>
