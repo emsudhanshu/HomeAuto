@@ -46,19 +46,10 @@ app.post('/capturePic', (req, res) => {
 			console.log(`stderr: ${stderr}`);
 			return;
 		}
-		if(stdout){
-			console.log('image created');
-			const content = fs.readFileSync('./image.jpg', { encoding: 'base64' });
-			res.send(JSON.stringify({ message: 'image captured successfully', imageData: content }))
-		}
-		
-
 	});
-
-
-
+	const content = fs.readFileSync('./image.jpg', { encoding: 'base64' });
+	res.send(JSON.stringify({ message: 'image captured successfully', imageData: content }))
 	// console.log(`stdout: ${stdout}`);
-
 
 })
 
