@@ -34,7 +34,7 @@ app.post('/changeState', (req, res) => {
 	}));
 });
 
-app.post('/captureImage', (req, res) => {
+app.post('/capturePic', (req, res) => {
 	exec(`sudo fswebcam /home/ubuntu/HomeAuto/HomeAuto/public/image.jpg -r "600x600"`, (error, stdout, stderr) => {
 		if (error) {
 			console.log(`error: ${error.message}`);
