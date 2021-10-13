@@ -2,6 +2,8 @@ const express = require('express');
 
 const path = require('path');
 
+const fs = require('fs');
+
 const { exec } = require('child_process');
 
 console.log("There is no god, well, I can't say. Something is there...");
@@ -35,7 +37,7 @@ app.post('/changeState', (req, res) => {
 });
 
 app.post('/capturePic', (req, res) => {
-	exec(`sudo fswebcam /home/ubuntu/HomeAuto/HomeAuto/public/image.jpg -r "600x600"`, (error, stdout, stderr) => {
+	exec(`sudo fswebcam /home/ubuntu/HomeAuto/HomeAuto/image.jpg -r "600x600"`, (error, stdout, stderr) => {
 		if (error) {
 			console.log(`error: ${error.message}`);
 			return;
@@ -44,11 +46,17 @@ app.post('/capturePic', (req, res) => {
 			console.log(`stderr: ${stderr}`);
 			return;
 		}
+		else{
+		console.log('image created');
+		}});
+			const content = fs.readFileSync('./image.jpg', {encoding: 'base64'});
+			console.log('content',content);
+			res.send(JSON.stringify({message : 'image captured successfully', imageData: content}))
+			
+		
 		// console.log(`stdout: ${stdout}`);
-	});
-	res.send(JSON.stringify({
-		'message': 'image captured successfully :)'
-	}));
+
+	
 })
 
 // making the server to listen to requests

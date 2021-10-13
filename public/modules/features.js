@@ -1,4 +1,4 @@
-import GATEWAY from '../config/gateway.js'
+import GATEWAY from '../config/gateway.js';
 import {CHANGE_STATE_ENDPOINT, CAPTURE_PIC_ENDPOINT} from '../config/endpoints.js';
  
 export function switchDevice(val, deviceId) {
@@ -11,10 +11,11 @@ export function switchDevice(val, deviceId) {
 }
 
 export function capturePic(cameraId) {
+
 	fetch(`${GATEWAY}${CAPTURE_PIC_ENDPOINT}`,
 		{
 			method: 'POST', body: JSON.stringify({ cameraId }),
 			headers: { 'Content-Type': 'application/json' }
-			}).then(data => alert(`success`));
+			}).then(data => {alert(`success`);console.log(data.body); document.querySelector('#c1_view').src=`data:image/png;base64,${data.imageData}`});
 
 }
