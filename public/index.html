@@ -16,13 +16,15 @@
 		<button
 			onClick="
 					console.log('button clicked');
-					fetch('http://192.168.1.11:8080/changeState',{method: 'POST', body : JSON.stringify({val: 1, deviceId: 1}),headers: {'Content-Type' : 'application/json'}}).then(data => alert('success - device 1 turned on'));">ON</button>
+					fetch('http://192.168.1.21:8080/changeState',{method: 'POST', body : JSON.stringify({val: 1, deviceId: 1}),headers: {'Content-Type' : 'application/json'}}).then(data => alert('success - device 1 turned on'));">ON</button>
 
 		<button onCLick="console.log('button clicked'); 
-				fetch('http://192.168.1.11:8080/changeState',{method: 'POST', body : JSON.stringify({val : 0, deviceId : 1}),headers : {'Content-Type' : 'application/json'}}).then(data=>alert('success device 1 turned off'));
+				fetch('http://192.168.1.21:8080/changeState',{method: 'POST', body : JSON.stringify({val : 0, deviceId : 1}),headers : {'Content-Type' : 'application/json'}}).then(data=>alert('success device 1 turned off'));
 				">OFF</button>
 	</div>
 	</div>
+
+	<img src="image.jpeg" alt="My desk from some distance." width="500" height="600">
 
 </body>
 
