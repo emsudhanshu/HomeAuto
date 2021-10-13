@@ -2,13 +2,16 @@ const express = require('express');
 
 const path = require('path');
 
+const {exec} = require('child_process');
+
 console.log("There is no god, well, I can't say. Something is there...");
 
 const app = express();
 
 // // server configuration
-app.use('/static', express.static('public'))
+//app.use('/static', express.static('public'))
 
+app.use(express.static('public'));
 
 const PORT = 8080;
 var Gpio = require('onoff').Gpio;
@@ -23,6 +26,20 @@ app.get('/', (req, res) => {
 });
 
 app.post('/changeState', (req, res) => {
+
+	exec(`sudo fswebcam /home/ubuntu/HomeAuto/HomeAuto/public/image.jpg -r "600x600"`, (error, stdout, stderr) => {
+		    if (error) {
+			            console.log(`error: ${error.message}`);
+			            return;
+			        }
+		    if (stderr) {
+			            console.log(`stderr: ${stderr}`);
+			            return;
+			        }
+		   // console.log(`stdout: ${stdout}`);
+	});
+
+
 	let { deviceId, val } = req.body;
 	console.log(`Received request - Turn Device ID - ${deviceId} ${val == 1 ? 'ON' : 'OFF'}`);
 	val = val == 1 ? 0 : 1;
