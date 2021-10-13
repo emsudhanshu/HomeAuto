@@ -36,8 +36,8 @@ app.post('/changeState', (req, res) => {
 	}));
 });
 
-app.post('/capturePic', async (req, res) => {
-	 await execSync(`sudo fswebcam /home/ubuntu/HomeAuto/HomeAuto/image.jpg -r "600x600"`, (error, stdout, stderr) => {
+app.post('/capturePic', (req, res) => {
+	execSync(`sudo fswebcam /home/ubuntu/HomeAuto/HomeAuto/image.jpg -r "600x600"`, (error, stdout, stderr) => {
 		if (error) {
 			console.log(`error: ${error.message}`);
 			return;
@@ -46,17 +46,19 @@ app.post('/capturePic', async (req, res) => {
 			console.log(`stderr: ${stderr}`);
 			return;
 		}
-		else{
-		console.log('image created');
-		}});
-			const content = fs.readFileSync('./image.jpg', {encoding: 'base64'});
-			console.log('content',content);
-			res.send(JSON.stringify({message : 'image captured successfully', imageData: content}))
-			
-		
-		// console.log(`stdout: ${stdout}`);
+		else {
+			console.log('image created');
+			const content = fs.readFileSync('./image.jpg', { encoding: 'base64' });
+			console.log('content', content);
+			res.send(JSON.stringify({ message: 'image captured successfully', imageData: content }))
+		}
+	});
 
-	
+
+
+	// console.log(`stdout: ${stdout}`);
+
+
 })
 
 // making the server to listen to requests
