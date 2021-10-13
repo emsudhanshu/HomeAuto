@@ -6,7 +6,9 @@ export function switchDevice(val, deviceId) {
 		{
 			method: 'POST', body: JSON.stringify({ val, deviceId }),
 			headers: { 'Content-Type': 'application/json' }
-			}).then(data => alert(`success - device 1 turned ${val==1?'on':'off'}`));
+			
+			})
+		.then(res=>res.json()).then(data => {console.log(data);alert(`success - device 1 turned ${val==1?'on':'off'}`)});
 
 }
 
@@ -16,6 +18,6 @@ export function capturePic(cameraId) {
 		{
 			method: 'POST', body: JSON.stringify({ cameraId }),
 			headers: { 'Content-Type': 'application/json' }
-			}).then(data => {alert(`success`);console.log(data.body); document.querySelector('#c1_view').src=`data:image/png;base64,${data.imageData}`});
+			}).then(res=>res.json()).then(data => {alert(`success`);console.log(data.body); document.querySelector('#c1_view').src=`data:image/png;base64,${data.imageData}`});
 
 }
