@@ -4,27 +4,38 @@
 	<title>
 		HomeAuto
 	</title>
+	<script type="module" src="./logic.js"></script>
 </head>
 
-<body <div style="font-family : 'calibri'">
-	<div style="text-align : center">
-		Welcome to HOME-AUTO
+<body style="text-align: center;">
+	<div style="font-family : 'calibri'">
+
+		<h1>
+			Welcome to HOME-AUTO
+		</h1>
+
+		<hr>
+
+		<h3 style="text-align: left;">Desk Controls</h3>
+
+		<div>
+			Turn Device 1
+			<button id="d1_on">ON</button>
+			<button id="d1_off">OFF</button>
+		</div>
+
+		<hr>
+
+		<h3 style="text-align: left;">Straight from the desk</h3>
+
+		<div>
+			<img src="image.jpg" alt="My desk from some distance.">
+			<div>
+				<button id="c1_capture">Capture now</button>
+			</div>
+		</div>
 	</div>
 
-	<div>
-		Turn Device 1
-		<button
-			onClick="
-					console.log('button clicked');
-					fetch('http://192.168.1.21:8080/changeState',{method: 'POST', body : JSON.stringify({val: 1, deviceId: 1}),headers: {'Content-Type' : 'application/json'}}).then(data => alert('success - device 1 turned on'));">ON</button>
-
-		<button onCLick="console.log('button clicked'); 
-				fetch('http://192.168.1.21:8080/changeState',{method: 'POST', body : JSON.stringify({val : 0, deviceId : 1}),headers : {'Content-Type' : 'application/json'}}).then(data=>alert('success device 1 turned off'));
-				">OFF</button>
-	</div>
-	</div>
-
-	<img src="image.jpg" alt="My desk from some distance.">
 
 </body>
 
