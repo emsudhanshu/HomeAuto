@@ -4,7 +4,7 @@ const path = require('path');
 
 const fs = require('fs');
 
-const { exec } = require('child_process');
+const { execSync } = require('child_process');
 
 console.log("There is no god, well, I can't say. Something is there...");
 
@@ -37,7 +37,7 @@ app.post('/changeState', (req, res) => {
 });
 
 app.post('/capturePic', async (req, res) => {
-	 await exec(`sudo fswebcam /home/ubuntu/HomeAuto/HomeAuto/image.jpg -r "600x600"`, (error, stdout, stderr) => {
+	 await execSync(`sudo fswebcam /home/ubuntu/HomeAuto/HomeAuto/image.jpg -r "600x600"`, (error, stdout, stderr) => {
 		if (error) {
 			console.log(`error: ${error.message}`);
 			return;
