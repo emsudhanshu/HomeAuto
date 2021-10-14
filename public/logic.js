@@ -1,7 +1,8 @@
 import { switchDevice, capturePic } from "./modules/features.js";	
 
+
 window.addEventListener("DOMContentLoaded", () => {
-	// DOM ready! Images, frames, and other subresources are still downloading.
+	//// DOM ready! Images, frames, and other subresources are still downloading.
 	capturePic();
 });
 
