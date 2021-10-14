@@ -1,10 +1,9 @@
 {
-  "dependencies": {    "express": "^4.17.1"
-  },
-  "scripts":{
-    "piConnect" : "ssh ubuntu@192.168.1.21"
-  },
   "dependencies": {
     "express": "^4.17.1",
-    "onoff": "^6.0.3"  }
+    "onoff": "^6.0.3"
+  },
+  "scripts": {
+    "piConnect": "ssh ubuntu@192.168.1.21"
+  }
 }
