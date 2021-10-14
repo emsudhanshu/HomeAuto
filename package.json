@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-=======
-  "dependencies": {    "express": "^4.17.1"
-  },
->>>>>>> 5b97b40aa2e1ad268fb41db8b7e25098c64efe1e
+
   "dependencies": {
     "express": "^4.17.1",
     "onoff": "^6.0.3"
