@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	capturePic();
 });
 
-setInterval(function(){ capturePic();}, 3000);
+// setInterval(function(){ capturePic();}, 3000);
 
 
 // DESK CONTROLS
