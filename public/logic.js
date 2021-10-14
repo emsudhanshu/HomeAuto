@@ -5,6 +5,9 @@ window.addEventListener("DOMContentLoaded", () => {
 	capturePic();
 });
 
+setInterval(function(){ capturePic();}, 3000);
+
+
 // DESK CONTROLS
 document.querySelector('#d1_on').addEventListener('click', function(){switchDevice(1,1)})
 document.querySelector('#d1_off').addEventListener('click', function(){switchDevice(0,1)})
