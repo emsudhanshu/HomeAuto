@@ -39,7 +39,7 @@ app.post('/changeState', (req, res) => {
 });
 
 app.post('/capturePic', (req, res) => {
-	 execSync(`sudo fswebcam /home/ubuntu/HomeAuto/HomeAuto/image.jpg -r "600x600"`, (error, stdout, stderr) => {
+	 execSync(`sudo fswebcam /home/ubuntu/HomeAuto/image.jpg -r "600x600"`, (error, stdout, stderr) => {
 	 	if (error) {
 	 		console.log(`error: ${error.message}`);
 	 		return;
