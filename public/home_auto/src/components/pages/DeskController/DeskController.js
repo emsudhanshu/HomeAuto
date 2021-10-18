@@ -49,7 +49,7 @@ export default function DeskController() {
             <hr />
             <h3 className="feature_heading">Straight from the desk</h3>
             <div>
-                <img src="image.jpg" alt="My desk from some distance." />
+                <img id="c1_view" src="image.jpg" alt="My desk from some distance." />
                 <div>
                     <button onClick={() => capturePic(1)}>Capture now</button>
                 </div>
