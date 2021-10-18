@@ -12,7 +12,7 @@ const app = express();
 
 // // server configuration
 
-app.use(express.static('public/home_auto/build'));
+app.use(express.static(path.join(__dirname, "public","home_auto","build")));
 app.use(express.static("public"));
 
 
@@ -25,7 +25,7 @@ app.use(express.json());
 LED.writeSync(1);
 
 app.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname, '/public/home_auto/build/index.html'));
+	res.sendFile('index.html');
 });
 
 app.post('/changeState', (req, res) => {
