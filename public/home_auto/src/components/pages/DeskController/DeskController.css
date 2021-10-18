@@ -1,0 +1,14 @@
+.loader {
+  width: 100%;
+  height: 100%;
+  background: #84d42047;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-family: "calibri";
+}
+
+.feature_heading {
+  text-align: left;
+}
