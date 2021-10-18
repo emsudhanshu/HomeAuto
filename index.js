@@ -13,6 +13,8 @@ const app = express();
 // // server configuration
 
 app.use(express.static('public/home_auto/build'));
+app.use(express.static("public"));
+
 
 const PORT = 8080;
 var Gpio = require('onoff').Gpio;
