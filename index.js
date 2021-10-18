@@ -26,7 +26,7 @@ LED.writeSync(1);
 
 app.get('/', (req, res) => {
 	res.sendFile("/home/ubuntu/HomeAuto/public/home_auto/build/index.html");
-);
+});
 
 app.post('/changeState', (req, res) => {
 	let { deviceId, val } = req.body;
