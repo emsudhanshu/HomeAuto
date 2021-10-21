@@ -2,12 +2,29 @@ import React, { useEffect, useState } from 'react';
 import './DeskController.css';
 import {switchDevice, capturePic} from '../../../modules/features';
 
+import { io } from "socket.io-client";
+const socket = io("http://192.168.1.21:8080/");
+
 export default function DeskController() {
 
     const [showLoader, setShowLoader] = useState(true);
 
     useEffect(() => {
-        capturePic(1,setShowLoader)
+        capturePic(1,setShowLoader);
+
+        socket.on("connect", () => {
+            console.log(socket); // x8WIv7-mJelg7on_ALbx
+          });
+
+          socket.on("image", (data) => {
+              console.log('data from socket',data)
+          });
+
+          
+          socket.on("disconnect", () => {
+            console.log(socket); // undefined
+          });
+          
     }, [])
 
     return (
