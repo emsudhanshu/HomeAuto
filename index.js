@@ -1,14 +1,14 @@
 const express = require('express');
-
 const path = require('path');
-
 const fs = require('fs');
-
 const { execSync } = require('child_process');
+const app = express();
+
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 
 console.log("There is no god, well, I can't say. Something is there...");
 
-const app = express();
 
 // server configuration
 
@@ -38,6 +38,10 @@ app.post('/changeState', (req, res) => {
 	}));
 });
 
+
+setInterval(()=>{
+	io.emit('image','data')
+},1000);
 app.post('/capturePic', (req, res) => {
 	 execSync(`sudo fswebcam /home/ubuntu/HomeAuto/image.jpg -r "600x600"`, (error, stdout, stderr) => {
 	 	if (error) {
@@ -56,7 +60,7 @@ app.post('/capturePic', (req, res) => {
 })
 
 // making the server to listen to requests
-app.listen(PORT, () => {
+server.listen(PORT, () => {
 	console.log(`Server running at: http://localhost:${PORT}/`);
 });
 
