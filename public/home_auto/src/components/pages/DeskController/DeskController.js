@@ -3,7 +3,7 @@ import './DeskController.css';
 import {switchDevice, capturePic} from '../../../modules/features';
 
 import { io } from "socket.io-client";
-const socket = io("http://192.168.1.21:8080/");
+const socket = io("ws://192.168.1.21:8080/");
 
 export default function DeskController() {
 
