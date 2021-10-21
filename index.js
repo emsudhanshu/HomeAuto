@@ -40,18 +40,18 @@ app.post('/changeState', (req, res) => {
 
 
 setInterval(()=>{
-	execSync(`sudo fswebcam /home/ubuntu/HomeAuto/image.jpg -r "600x600"`, (error, stdout, stderr) => {
-		if (error) {
-			console.log(`error: ${error.message}`);
-			return;
-		}
-		if (stderr) {
-			console.log(`stderr: ${stderr}`);
-			return;
-		}
-	});
-	const content = fs.readFileSync('./image.jpg', { encoding: 'base64' });
-	io.emit('image',content);
+	// execSync(`sudo fswebcam /home/ubuntu/HomeAuto/image.jpg -r "600x600"`, (error, stdout, stderr) => {
+	// 	if (error) {
+	// 		console.log(`error: ${error.message}`);
+	// 		return;
+	// 	}
+	// 	if (stderr) {
+	// 		console.log(`stderr: ${stderr}`);
+	// 		return;
+	// 	}
+	// });
+	// const content = fs.readFileSync('./image.jpg', { encoding: 'base64' });
+	io.emit('image','content');
 },1000);
 
 app.post('/capturePic', (req, res) => {
