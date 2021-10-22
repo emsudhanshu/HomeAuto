@@ -27,6 +27,8 @@ export function capturePic(cameraId,setShowLoader) {
 		{
 			method: 'POST', body: JSON.stringify({ cameraId }),
 			headers: { 'Content-Type': 'application/json' }
-			}).then(res=>{setShowLoader(false); return res.json()}).then(data => {console.log(data.body); document.querySelector('#c1_view').src=`data:image/png;base64,${data.imageData}`}).catch(()=>setShowLoader(false));
+			}).then(res=>{setShowLoader(false); return res.json()}).then(data => {console.log(data.body); 
+				// document.querySelector('#c1_view').src=`${data.imageData}`
+			}).catch(()=>setShowLoader(false));
 
 }

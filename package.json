@@ -1,22 +1,13 @@
 {
-
   "dependencies": {
-
     "express": "^4.17.1",
-
     "http": "^0.0.1-security",
-
+    "node-webcam": "^0.8.0",
     "onoff": "^6.0.3",
-
     "socket.io": "^4.3.1"
-
   },
-
   "scripts": {
-
-    "piConnect": "ssh ubuntu@192.168.1.21"
-
+    "piConnect": "ssh ubuntu@192.168.1.21",
+    "postinstall": "if [ ! -f node_modules/opencv4nodejs/build/Release/opencv4nodejs.node ]; then cd node_modules/opencv4nodejs/build; make; fi"
   }
-
 }
-

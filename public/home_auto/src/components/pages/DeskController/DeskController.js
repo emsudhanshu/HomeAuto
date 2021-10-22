@@ -17,7 +17,8 @@ export default function DeskController() {
           });
 
           socket.on("image", (data) => {
-              console.log('data from socket',data)
+            //   console.log('data from socket',data)
+              document.querySelector('#c1_view').src=`${data}`;
           });
 
           
