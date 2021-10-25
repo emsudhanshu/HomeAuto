@@ -2,7 +2,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const { execSync } = require('child_process');
+const { exec } = require('child_process');
 const app = express();
 
 const NodeWebcam = require("node-webcam");
@@ -27,6 +27,57 @@ var LED = new Gpio(4, 'out');
 app.use(express.json());
 
 LED.writeSync(1);
+// const content = fs.readFileSync('./image.jpg', { encoding: 'base64' });
+
+function captureFrame() {
+	console.log('yo');
+
+
+	exec(`fswebcam /home/ubuntu/HomeAuto/public/home_auto/build/logo1.png -r "384x288" -l 1 --fps 30 -i 0 --set lights=on`, (error, stdout, stderr) => {
+		if (error) {
+			console.log(`error: ${error.message}`);
+			return;
+		}
+
+		// if (stderr) {
+		// 	console.log(`stderr: ${stderr}`);
+		// 	return;
+		// }
+		// if(stdout){
+		// 	console.log('yipee',stdout);
+
+		// }
+		console.log('yo',stderr);
+				// captureFrame();
+	})
+
+	// console.log('yo')
+	// const content = fs.readFileSync('./image.jpg', { encoding: 'base64' });
+	// io.emit('image', content);
+
+
+
+
+
+	// NodeWebcam.capture("picture.tmp", {
+	// 	width: 400,
+	// 	height: 400,
+	// 	quality: 50,
+	// 	frames: 30,
+	// 	verbose: false,
+	// 	saveShots: true,
+	// 	callbackReturn: "png",
+	// 	delay: 0
+	// }, function (err, data) {
+	// 	console.log(new Date());
+	// 	captureFrame()
+	// 	// io.emit('image', 'data');
+	// });
+}
+
+setTimeout(()=>{
+	captureFrame()
+},1000)
 
 app.get('/', (req, res) => {
 	res.sendFile("/home/ubuntu/HomeAuto/public/home_auto/build/index.html");
@@ -43,32 +94,34 @@ app.post('/changeState', (req, res) => {
 });
 
 
-setInterval(() => {
-	// execSync(`sudo fswebcam /home/ubuntu/HomeAuto/image.jpg -r "600x600"`, (error, stdout, stderr) => {
-	// 	if (error) {
-	// 		console.log(`error: ${error.message}`);
-	// 		return;
-	// 	}
-	// 	if (stderr) {
-	// 		console.log(`stderr: ${stderr}`);
-	// 		return;
-	// 	}
-	// });
-	// const content = fs.readFileSync('./image.jpg', { encoding: 'base64' });
 
-	NodeWebcam.capture("picture.tmp", {
-		width: 400,
-		height: 400,
-		quality: 50,
-		frames: 1,
-		verbose: false,
-		saveShots: false,
-		callbackReturn: "base64",
-		delay: 1
-	}, function (err, data) {
-		io.emit('image', data);
-	});
-}, 1000);
+
+// setInterval(() => {
+// 	// execSync(`sudo fswebcam /home/ubuntu/HomeAuto/image.jpg -r "600x600"`, (error, stdout, stderr) => {
+// 	// 	if (error) {
+// 	// 		console.log(`error: ${error.message}`);
+// 	// 		return;
+// 	// 	}
+// 	// 	if (stderr) {
+// 	// 		console.log(`stderr: ${stderr}`);
+// 	// 		return;
+// 	// 	}
+// 	// });
+// 	// const content = fs.readFileSync('./image.jpg', { encoding: 'base64' });
+
+// 	NodeWebcam.capture("picture.tmp", {
+// 		width: 400,
+// 		height: 400,
+// 		quality: 50,
+// 		frames: 1,
+// 		verbose: false,
+// 		saveShots: false,
+// 		callbackReturn: "base64",
+// 		delay: 1
+// 	}, function (err, data) {
+// 		io.emit('image', data);
+// 	});
+// }, 1000);
 
 app.post('/capturePic', (req, res) => {
 	//  execSync(`sudo fswebcam /home/ubuntu/HomeAuto/image.jpg -r "600x600"`, (error, stdout, stderr) => {
@@ -85,15 +138,15 @@ app.post('/capturePic', (req, res) => {
 
 
 	// NodeWebcam.capture("picture.tmp", { saveShots: false, callbackReturn: "base64" }, function (err, data) {
-		// For example use a custom write
-		// fs.writeFileSync("picture.png", data);
+	// For example use a custom write
+	// fs.writeFileSync("picture.png", data);
 
-		// console.log('imagedata', data, err);
-		// Erase temp file created
-		// fs.unlinkSync("picture.tmp");
+	// console.log('imagedata', data, err);
+	// Erase temp file created
+	// fs.unlinkSync("picture.tmp");
 
-		// const content = fs.readFileSync('./image.jpg', { encoding: 'base64' });
-		res.send(JSON.stringify({ message: 'image captured successfully', imageData: 'data' }))
+	// const content = fs.readFileSync('./image.jpg', { encoding: 'base64' });
+	res.send(JSON.stringify({ message: 'image captured successfully', imageData: 'data' }))
 	// });
 
 
