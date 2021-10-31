@@ -33,7 +33,7 @@ function captureFrame() {
 	console.log('yo');
 
 
-	exec(`fswebcam /home/ubuntu/HomeAuto/public/home_auto/build/deskcam.png -r "384x288" -l 1 --fps 30 -i 0 --set`, (error, stdout, stderr) => {
+	exec(`fswebcam /home/ubuntu/HomeAuto/public/home_auto/build/deskcam.png -r "384x288" -l 1 --fps 30 -i 0`, (error, stdout, stderr) => {
 		if (error) {
 			console.log(`error: ${error.message}`);
 			return;
