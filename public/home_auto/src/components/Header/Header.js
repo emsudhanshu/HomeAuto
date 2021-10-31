@@ -1,7 +1,9 @@
-export default function Header(){
-    return(
-        <h3>
-            Welcome to HomeAuto
-        </h3>
+import './Header.css';
+
+export default function Header() {
+    return (
+        <div className="header_container">
+                HomeAuto Desk Controller
+        </div>
     )
 }

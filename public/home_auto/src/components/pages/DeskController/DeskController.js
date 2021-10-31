@@ -5,16 +5,23 @@ import { switchDevice, capturePic } from '../../../modules/features';
 // import { io } from "socket.io-client";
 // const socket = io("ws://192.168.1.21:8080/");
 
+const devices = [
+    { id: 1, name: 'Light' },
+    { id: 2, name: 'Fan' },
+    { id: 3, name: 'Monitor' },
+    { id: 4, name: 'RGB strip' },
+]
+
 export default function DeskController() {
 
     const [showLoader, setShowLoader] = useState(true);
     const [renderer, setRenderer] = useState(true);
 
     const refreshImage = function () {
-        setInterval(() => { 
+        setInterval(() => {
             var timestamp = new Date().getTime();
             var image = document.getElementById("c1_view");
-            image.src = "http://192.168.1.21:8080/logo1.png?t=" + timestamp;
+            image.src = "http://192.168.1.21:8080/deskcam.png?t=" + timestamp;
         }, 500)
     }
 
@@ -41,6 +48,20 @@ export default function DeskController() {
 
     }, [])
 
+    const renderDeviceList = () => {
+        return devices.map((d, i) => {
+            return (
+                <div key={i} className="switch_row">
+                    <div>{d.name}</div>
+                    <div>
+                        <button onClick={() => switchDevice(1, 1, setShowLoader)}>ON</button>
+                        <button onClick={() => switchDevice(0, 1, setShowLoader)}>OFF</button>
+                    </div>
+                </div>
+            )
+        })
+    }
+
     return (
         <React.Fragment>
             {showLoader &&
@@ -49,23 +70,16 @@ export default function DeskController() {
                 </div>
             }
             <h3 className="feature_heading">Desk Controls</h3>
-            <div>
-                Turn Device 1
-                <button onClick={() => switchDevice(1, 1, setShowLoader)}>ON</button>
-                <button onClick={() => switchDevice(0, 1, setShowLoader)}>OFF</button>
-            </div>
-            <hr />
+            {renderDeviceList()}
             <h3 className="feature_heading">Straight from the desk</h3>
-            <div>
 
                 {
                     renderer &&
-                    <img id="c1_view" src="http://192.168.1.21:8080/logo1.png" alt="My desk from some distance." />
+                    <img className="camera_view" id="c1_view" src="http://192.168.1.21:8080/logo1.png" alt="" />
                 }
                 {/* <div>
                     <button onClick={() => capturePic(1,setShowLoader)}>Capture now</button>
                 </div> */}
-            </div>
         </React.Fragment>
     )
 }

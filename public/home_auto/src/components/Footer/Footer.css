@@ -1,5 +1,13 @@
 .footer_container {
-    background: #007410;
     padding: 10px;
     color: white;
+    background-color: black;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    font-size: 9px;
+    height: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

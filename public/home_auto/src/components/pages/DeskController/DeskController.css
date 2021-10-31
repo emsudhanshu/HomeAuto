@@ -11,4 +11,49 @@
 
 .feature_heading {
   text-align: left;
+  padding: 5px;
+}
+
+.switch_row > div{
+  margin-right : 10px;
+  width : 50px;
+  display: inline;
+
+}
+
+.switch_row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding : 10px;
+  width: 300px;
+  margin: auto
+}
+
+.switch_row > div:nth-child(1){
+  width : 100px;
+}
+
+
+.switch_row > div:nth-child(2){
+  width : 200px
+}
+
+.switch_row button{
+  margin-right : 5px;
+  margin-left : 5px;
+  background-color: #588cc5;
+  color: white;
+  padding: 5px;
+  width : 60px;
+  border-radius: 6px;
+  box-shadow: none;
+  display: inline;
+}
+
+.camera_view{
+  height: 300px;
+  width: 300px;
+  margin: auto;
 }
