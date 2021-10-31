@@ -11,7 +11,7 @@ export default function DeskController() {
     const [renderer, setRenderer] = useState(true);
 
     const refreshImage = function () {
-        setInterval(() => {
+        setInterval(() => { 
             var timestamp = new Date().getTime();
             var image = document.getElementById("c1_view");
             image.src = "http://192.168.1.21:8080/logo1.png?t=" + timestamp;
